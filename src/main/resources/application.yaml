@@ -1,0 +1,24 @@
+spring:
+  jpa:
+    database:postgresql
+    show-sql:false
+    generate-ddl:true
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: '.jsp '
+  hibernate:
+    ddl-auto:update
+  properties:
+      hibernate:
+        dialect:org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+      lob:
+      non_contextual_creation:
+          true
+  datasource:
+      url:postgresql://localhost:5432/demo
+      username:239
+      password:239
+  driver-class-name:
+      org.postgresql.Driver
