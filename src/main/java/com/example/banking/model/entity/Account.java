@@ -41,7 +41,7 @@ public class Account {
     @NotNull
     BigInteger korAccount;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     List<Card> cards;
 
 }

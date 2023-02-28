@@ -10,19 +10,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/houses")
+@RequestMapping("/cards")
 @RequiredArgsConstructor
 public class CardController {
     private final CardService cardService;
 
     @PostMapping
-    public ResponseEntity<CardDtoRequest> createCard(@RequestBody CardDtoRequest CardDtoRequest) {
-        return ResponseEntity.ok(cardService.create(CardDtoRequest));
+    public ResponseEntity<CardDtoRequest> createCard(@RequestBody CardDtoRequest cardDtoRequest) {
+        return ResponseEntity.ok(cardService.create(cardDtoRequest));
     }
 
     @PutMapping
-    public ResponseEntity<CardDtoRequest> reissueCard(@RequestBody CardDtoRequest CardDtoRequest) {
-        return ResponseEntity.ok(cardService.reissue(CardDtoRequest));
+    public ResponseEntity<CardDtoRequest> reissueCard(@RequestBody CardDtoRequest cardDtoRequest) {
+        return ResponseEntity.ok(cardService.reissue(cardDtoRequest));
     }
 
 
@@ -32,7 +32,7 @@ public class CardController {
     }
 
     @DeleteMapping
-    public ResponseEntity<HttpStatus> deleteHouse(@RequestParam Integer number) {
+    public ResponseEntity<HttpStatus> deleteCard(@RequestParam Integer number) {
 
         cardService.delete(number);
         return ResponseEntity.ok().build();

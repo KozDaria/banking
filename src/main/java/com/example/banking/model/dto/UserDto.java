@@ -13,7 +13,6 @@ public class UserDto {
     Integer age;
     String firstName;
     String lastName;
-    Gender gender;
     String email;
 
 }
