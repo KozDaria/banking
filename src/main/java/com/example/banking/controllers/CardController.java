@@ -39,9 +39,9 @@ public class CardController {
     }
 
 
-    @PostMapping("/cardToOwner")
-    public ResponseEntity<CardDtoResponse> addToUser(@RequestParam String name, @RequestParam String email) {
-        return ResponseEntity.ok(cardService.addToUser(name, email));
+    @PostMapping("/cardToAccount")
+    public ResponseEntity<CardDtoResponse> addToAccount(@RequestParam Integer number, @RequestParam Integer numberAcc) {
+        return ResponseEntity.ok(cardService.addToAccount(number, numberAcc));
     }
 
 }
