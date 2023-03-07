@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,11 +29,11 @@ public class Card {
     @Column(name = "cvv")
     Integer cvv;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    Account account;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    User user;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    List<Account> account;
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    User user;
 
     String ownerName;
 

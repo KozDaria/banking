@@ -17,22 +17,22 @@ import org.springframework.web.bind.annotation.*;
 public class AccountController {
     private final AccountService accountService;
 
-    @PostMapping
+    @PostMapping("/createAcc")
     public ResponseEntity<AccountDtoRequest> createAccount(@RequestBody AccountDtoRequest accountDtoRequest) {
         return ResponseEntity.ok(accountService.create(accountDtoRequest));
     }
 
-    @GetMapping
+    @GetMapping("/getAcc")
     public ResponseEntity<AccountDtoRequest> getAccount(@RequestParam Integer number) {
         return ResponseEntity.ok(accountService.get(number));
     }
 
-    @GetMapping
+    @GetMapping("/getAccDet")
     public ResponseEntity<AccountDtoRequest> getAccountDetails(@RequestParam Integer number) {
         return ResponseEntity.ok(accountService.getAccountDetails(number));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/deleteAcc")
     public ResponseEntity<HttpStatus> deleteAccount(@RequestParam Integer number) {
         accountService.delete(number);
         return ResponseEntity.ok().build();

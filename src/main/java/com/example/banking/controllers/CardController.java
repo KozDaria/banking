@@ -15,23 +15,23 @@ import org.springframework.web.bind.annotation.*;
 public class CardController {
     private final CardService cardService;
 
-    @PostMapping
+    @PostMapping("/createCard")
     public ResponseEntity<CardDtoRequest> createCard(@RequestBody CardDtoRequest cardDtoRequest) {
         return ResponseEntity.ok(cardService.create(cardDtoRequest));
     }
 
-    @PutMapping
+    @PutMapping("/reissue")
     public ResponseEntity<CardDtoRequest> reissueCard(@RequestBody CardDtoRequest cardDtoRequest) {
         return ResponseEntity.ok(cardService.reissue(cardDtoRequest));
     }
 
 
-    @GetMapping
+    @GetMapping("/getCard")
     public ResponseEntity<CardDtoRequest> getCard(@RequestParam Integer number) {
         return ResponseEntity.ok(cardService.get(number));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/deleteCard")
     public ResponseEntity<HttpStatus> deleteCard(@RequestParam Integer number) {
 
         cardService.delete(number);

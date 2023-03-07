@@ -22,26 +22,22 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "account number", unique = true)
-    @NotNull
+    @Column(name = "account number", unique = true, nullable = false)
     Integer number;
 
     @Column(name = "owner")
     String name;
 
     @Column(name = "bic")
-    @NotNull
     Integer bic;
 
     @Column(name = "bank")
-    @NotNull
     String bank;
 
     @Column(name = "kor_account")
-    @NotNull
     BigInteger korAccount;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    List<Card> cards;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    List<Card> cards;
 
 }

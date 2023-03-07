@@ -2,15 +2,9 @@ package com.example.banking.services.Impl;
 
 import com.example.banking.exceptions.CustomException;
 import com.example.banking.model.dto.AccountDtoRequest;
-import com.example.banking.model.dto.CardDtoRequest;
-import com.example.banking.model.dto.CardDtoResponse;
 import com.example.banking.model.entity.Account;
-import com.example.banking.model.entity.Card;
-import com.example.banking.model.enums.CardStatus;
 import com.example.banking.model.repository.AccountRepository;
-import com.example.banking.model.repository.CardRepository;
 import com.example.banking.services.AccountService;
-import com.example.banking.services.CardService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +18,7 @@ public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
     private final ObjectMapper mapper;
+
 
     @Override
     public AccountDtoRequest create(AccountDtoRequest accountDtoRequest) {

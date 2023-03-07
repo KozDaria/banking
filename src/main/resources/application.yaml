@@ -1,14 +1,14 @@
 spring:
-  jpa:
-    database:postgresql
-    show-sql:false
-    generate-ddl:true
-  mvc:
-    view:
-      prefix: /WEB-INF/views/
-      suffix: '.jsp '
+ mvc:
+   view:
+     prefix: /WEB-INF/views/
+     suffix: .jsp
+ jpa:
+  database: postgresql
+  show-sql: false
+  generate-ddl: true
   hibernate:
-    ddl-auto:update
+    ddl-auto: update
   properties:
       hibernate:
         dialect:org.hibernate.dialect.PostgreSQLDialect
@@ -16,9 +16,8 @@ spring:
       lob:
       non_contextual_creation:
           true
-  datasource:
-      url:postgresql://localhost:5432/bank
-      username:239
-      password:239
-  driver-class-name:
-      org.postgresql.Driver
+ datasource:
+     url: jdbc:postgresql://localhost:5432/bank
+     username: postgres
+     password: 239
+     driver-class-name: org.postgresql.Driver
