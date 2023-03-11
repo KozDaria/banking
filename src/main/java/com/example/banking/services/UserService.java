@@ -6,9 +6,9 @@ import com.example.banking.model.entity.User;
 public interface UserService {
 
     public UserDto create(UserDto userDto);
-    public User validateUser(String username, String password);
+    public User validateUser(String login, String password);
 
     public User findById(int id);
 
-    public User findByUsername(String username);
+    public User findByLogin(String login);
 }

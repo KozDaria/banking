@@ -29,17 +29,17 @@ public class UserServiceImpl implements UserService {
     @PersistenceContext
     EntityManager entityManager;
 
-    String findUserByNameQuery = "from User WHERE name=?1";
+    String findUserByLoginQuery = "from User WHERE login=?1";
 
     @Override
     public User findById(int id) {
         return entityManager.find(User.class, id);
     }
 @Override
-    public User findByUsername(String username) {
+    public User findByLogin(String login) {
         try {
-            TypedQuery<User> tq = entityManager.createQuery(findUserByNameQuery, User.class);
-            User user = tq.setParameter(1, username).getSingleResult();
+            TypedQuery<User> tq = entityManager.createQuery(findUserByLoginQuery, User.class);
+            User user = tq.setParameter(1, login).getSingleResult();
             return user;
         } catch (NoResultException noresult) {
             // if there is no result
@@ -52,13 +52,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto create(UserDto userDTO) {
         User user = mapper.convertValue(userDTO, User.class);
-        user.setPassword(PasswordService.encodes(user.getPassword()));
+        //user.setPassword(PasswordService.encodes(user.getPassword()));
 
         return mapper.convertValue(userRepository.save(user), UserDto.class);
     }
     @Override
-    public User validateUser(String username, String password) {
-        User user = findByUsername(username);
+    public User validateUser(String login, String password) {
+        User user = findByLogin(login);
         System.out.println(user);
         if (user != null) {
             if (pwService.matches(password, user.getPassword())) {

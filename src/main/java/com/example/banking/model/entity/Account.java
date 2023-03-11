@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "accounts")
+@Table(name = "all_accounts")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Account {
 
@@ -22,10 +22,10 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "account number", unique = true, nullable = false)
+    @Column(name = "account_number", unique = true, nullable = false)
     Integer number;
 
-    @Column(name = "owner")
+    @Column(name = "person")
     String name;
 
     @Column(name = "bic")
