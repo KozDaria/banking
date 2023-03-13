@@ -1,7 +1,6 @@
 spring:
- mvc:
-   view:
-     prefix: /webapp/view/
+ thymeleaf:
+     prefix: classpath:/WEB-INF/view/templates
      suffix: .jsp
  jpa:
   database: postgresql
