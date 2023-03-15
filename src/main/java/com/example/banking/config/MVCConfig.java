@@ -12,6 +12,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
         @Override
         public void addViewControllers(ViewControllerRegistry registry) {
             registry.addViewController("/login").setViewName("login");
+            registry.addViewController("/registration").setViewName("registration");
+            registry.addViewController("/accounts").setViewName("accounts");
+            registry.addViewController("/cards").setViewName("cards");
             registry.addViewController("/").setViewName("login");
             registry.addViewController("/welcome").setViewName("welcome");
         }

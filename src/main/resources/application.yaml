@@ -2,6 +2,7 @@ spring:
  thymeleaf:
      prefix: classpath:/WEB-INF/view/templates
      suffix: .jsp
+     mode: HTML
  jpa:
   database: postgresql
   show-sql: true

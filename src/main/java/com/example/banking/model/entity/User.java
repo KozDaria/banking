@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,5 +31,10 @@ public class User {
     String name;
     String lastName;
 
+    @OneToMany
+    List<Card> cards;
+
+    @OneToMany
+    List<Account> account;
 
 }

@@ -1,6 +1,7 @@
 package com.example.banking.model.entity;
 
 import com.example.banking.model.enums.CardStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,11 +30,17 @@ public class Card {
     @Column(name = "cvv")
     Integer cvv;
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    List<Account> account;
-//
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    User user;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinTable(name = "cards_account", joinColumns = {@JoinColumn(name = "CARD_ID",
+            referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "ACCOUNT_ID",
+                    referencedColumnName = "id")})
+    List<Account> account;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    User user;
 
     String ownerName;
 

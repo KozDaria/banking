@@ -1,6 +1,7 @@
 
 package com.example.banking.controllers;
 
+import com.example.banking.model.dto.UserDto;
 import com.example.banking.model.entity.User;
 import com.example.banking.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +15,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping()
 @RequiredArgsConstructor
 public class UserController {
 
@@ -33,6 +35,15 @@ public class UserController {
         }
         return "login";
     }
+
+    @GetMapping("/registration")
+    public String showRegisrationPage(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+
+        return "registration";
+    }
+
 
     @RequestMapping("/")
     public String checkMVC(HttpServletRequest request){
@@ -50,10 +61,29 @@ public class UserController {
 
             // If user found, create new session
             HttpSession session = request.getSession();
-            session.setAttribute("login", foundUser.getLogin());
+            session.setAttribute("name", foundUser.getLastName() + " " + foundUser.getName());
             return "welcome";
        }
         model.put("errorMessage", "login_invalid");
+
+        return "login";
+    }
+
+    @PostMapping("/registration")
+    public String saveNewUser(@ModelAttribute ModelMap model, @RequestParam("name") String name, @RequestParam("lastName") String lastName,
+                              @RequestParam("email") String email, @RequestParam("phone") String phone,
+                              @RequestParam("login") String login, @RequestParam("password") String password,
+                              HttpServletRequest request) {
+        logger.info("username: " + name + " lastName: " + lastName + "email " + email +  "phone" + phone +"login" + login+ "password" + password);
+        // Get user from database
+
+        User foundUser = userService.findByLogin(login);
+        if (foundUser != null) {
+            model.put("message", "Пользователь с таким логином уже существует!");
+            return "registration";
+        }
+          
+        userService.create(new UserDto(name, lastName, email, login,password,phone));
 
         return "login";
     }

@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto create(UserDto userDTO) {
         User user = mapper.convertValue(userDTO, User.class);
-        //user.setPassword(PasswordService.encodes(user.getPassword()));
+        user.setPassword(PasswordService.encodes(user.getPassword()));
 
         return mapper.convertValue(userRepository.save(user), UserDto.class);
     }
@@ -67,5 +67,6 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
 
 }

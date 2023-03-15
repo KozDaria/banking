@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -33,6 +35,13 @@ public class CardServiceImpl implements CardService {
         Card save = cardRepository.save(card);
 
         return mapper.convertValue(save, CardDtoRequest.class);
+    }
+
+    private Integer randomInt() {
+        int max = 100;
+        int min = 10;
+        int randomInt = new SecureRandom().nextInt(max - min) + min;
+        return randomInt;
     }
 
     @Override

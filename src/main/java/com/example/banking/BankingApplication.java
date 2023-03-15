@@ -1,5 +1,8 @@
 package com.example.banking;
 
+import com.example.banking.model.dto.UserDto;
+import com.example.banking.services.UserService;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;

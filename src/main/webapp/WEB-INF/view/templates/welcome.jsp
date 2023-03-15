@@ -1,6 +1,4 @@
 <%@ include file="../common/header.jspf" %>
-<a href="/login?lang=en" role="button">English</a>
-<a href="/login?lang=fr" role="button">French</a>
 <div class="container">
     <%
         session = request.getSession(false);
@@ -11,13 +9,21 @@
     <h3>
         ${welcome_name}:
         <%
-            out.print(session.getAttribute("login"));
+            out.print("Welcome "+ session.getAttribute("name"));
         %>
     </h3>
+    <br>
+    <!-- Cards -->
+    <p>My cards
+        <a href="http://localhost:8080/cards/">Details</a>
+    </p>
+    <br>
 
-    <a class="btn btn-danger" href="/logout" role="button">${welcome_logout}</a>
+    <!-- Accounts -->
+    <p>My accounts
+        <a href="http://localhost:8080/accounts/">Details</a>
+    </p>
 
-    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <a class="btn btn-danger" href="/logout" role="button">Logout${welcome_logout}</a>
+
 </div>
-<%@ include file="../common/footer.jspf" %>
