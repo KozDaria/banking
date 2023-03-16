@@ -25,10 +25,10 @@ public class Card {
     String valid;
 
     @Column(name = "number", unique = true)
-    Integer number;
+    String number;
 
     @Column(name = "cvv")
-    Integer cvv;
+    String cvv;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore

@@ -13,11 +13,11 @@ import java.util.Optional;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
-    Optional<Account> findByNumber(Integer number);
+    Optional<Account> findByNumber(String number);
 
 
 
     @Query("select number, name, bic, bank, korAccount from Account where number =:numberAcc")
-    Optional<Account> getAccountByNumber(@Param("number") Integer numberAcc);
+    Optional<Account> getAccountByNumber(@Param("number") String numberAcc);
 
 }

@@ -18,7 +18,8 @@
             </label>
         </div>
     </div>
-
+<br>
+    <br>
     <!-- E-mail -->
     <label>E-mail:
     <input type="email" name="email" class="form-control mb-4" placeholder="${email}" required="required">

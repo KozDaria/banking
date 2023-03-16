@@ -35,12 +35,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountDtoRequest get(Integer number) {
+    public AccountDtoRequest get(String number) {
         return mapper.convertValue(getAccount(number), AccountDtoRequest.class);
     }
 
     @Override
-    public AccountDtoRequest getAccountDetails(Integer number){
+    public AccountDtoRequest getAccountDetails(String number){
 
         Account account = mapper.convertValue(accountRepository.getAccountByNumber(number), Account.class);
         Account save = accountRepository.save(account);
@@ -49,12 +49,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void delete(Integer number) {
+    public void delete(String number) {
         Account account = getAccount(number);
         accountRepository.save(account);
     }
 
-    private Account getAccount(Integer number) {
+    private Account getAccount(String number) {
         return accountRepository.findByNumber(number)
                 .orElseThrow(() -> new CustomException("Счёт с таким номером не найден", HttpStatus.NOT_FOUND));
     }

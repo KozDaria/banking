@@ -1,5 +1,7 @@
 package com.example.banking.services.Impl;
 
+import com.example.banking.NumGenerator;
+import com.example.banking.controllers.CardController;
 import com.example.banking.exceptions.CustomException;
 import com.example.banking.model.dto.CardDtoRequest;
 import com.example.banking.model.dto.CardDtoResponse;
@@ -37,44 +39,40 @@ public class CardServiceImpl implements CardService {
         return mapper.convertValue(save, CardDtoRequest.class);
     }
 
-    private Integer randomInt() {
-        int max = 100;
-        int min = 10;
-        int randomInt = new SecureRandom().nextInt(max - min) + min;
-        return randomInt;
-    }
-
     @Override
-    public CardDtoRequest reissue(CardDtoRequest cardDtoRequest) {
-        Card card = getCard(cardDtoRequest.getNumber());
+    public CardDtoRequest reissue(String number) {
 
-        card.setValid(cardDtoRequest.getValid() == null ? card.getValid() : cardDtoRequest.getValid());
-        card.setCvv(cardDtoRequest.getCvv() == null ? card.getCvv() : cardDtoRequest.getCvv());
+        NumGenerator numGenerator = new NumGenerator();
+
+        Card card = getCard(number);
+
+        card.setValid(card.getValid().split("/")[0]+"/"+(Integer.valueOf(card.getValid().split("/")[1])+2));
+        card.setCvv(numGenerator.random(3));
         card.setStatus(CardStatus.VALID);
 
         return mapper.convertValue(cardRepository.save(card), CardDtoRequest.class);
     }
 
     @Override
-    public CardDtoRequest get(Integer number) {
+    public CardDtoRequest get(String number) {
         return mapper.convertValue(getCard(number), CardDtoRequest.class);
     }
 
     @Override
-    public void delete(Integer number) {
+    public void delete(String number) {
         Card card = getCard(number);
         card.setStatus(CardStatus.DELETED);
         cardRepository.save(card);
     }
 
-    private Card getCard(Integer number) {
+    private Card getCard(String number) {
         return cardRepository.findByNumber(number)
                 .orElseThrow(() -> new CustomException("Карта с таким номером не найдена", HttpStatus.NOT_FOUND));
     }
 
 
     @Override
-    public CardDtoResponse addToAccount(Integer number, Integer accountNumber) {
+    public CardDtoResponse addToAccount(String number, Integer accountNumber) {
 //        Account account = accountService.getAccount(accountNumber);
 //        Card card = getCard(number);
 //        card.setAccount(account);

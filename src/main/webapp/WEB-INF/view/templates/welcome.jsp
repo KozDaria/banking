@@ -1,11 +1,11 @@
 <%@ include file="../common/header.jspf" %>
 <div class="container">
-    <%
-        session = request.getSession(false);
-        if (session.getAttribute("login") == null) {
-            response.sendRedirect("login.jsp");
-        }
-    %>
+<%--    <%--%>
+<%--        session = request.getSession(false);--%>
+<%--        if (session.getAttribute("login") == null) {--%>
+<%--            response.sendRedirect("login.jsp");--%>
+<%--        }--%>
+<%--    %>--%>
     <h3>
         ${welcome_name}:
         <%

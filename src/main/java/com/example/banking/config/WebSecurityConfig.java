@@ -15,13 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    PasswordService passwordService;
-//
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(passwordService).passwordEncoder(new BCryptPasswordEncoder());
-//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -29,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // The pages does not require login
         http.authorizeRequests().antMatchers("/", "/login", "/logout",
-                "/registration", "/accounts","/cards", "/topic", "/topic/message").permitAll();
+                "/registration", "/accounts","/cards","/createCard", "/cards/createCard", "/topic", "/topic/message").permitAll();
 
         // /userInfo page requires login as USER or ADMIN.
         // If no login, it will redirect to /login page.

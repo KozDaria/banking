@@ -7,11 +7,11 @@ public interface CardService {
 
         CardDtoRequest create(CardDtoRequest cardDTORequest);
 
-        CardDtoRequest reissue(CardDtoRequest cardDTORequest);
+        CardDtoRequest reissue(String number);
 
-        CardDtoRequest get(Integer number);
+        CardDtoRequest get(String number);
 
-        void delete(Integer number);
+        void delete(String number);
 
-        CardDtoResponse addToAccount(Integer number, Integer accountNumber);
+        CardDtoResponse addToAccount(String number, Integer accountNumber);
 }

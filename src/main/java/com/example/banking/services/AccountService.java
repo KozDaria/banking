@@ -7,9 +7,9 @@ public interface AccountService {
 
         AccountDtoRequest create(AccountDtoRequest accountDtoRequest);
 
-        AccountDtoRequest get(Integer number);
+        AccountDtoRequest get(String number);
 
-        AccountDtoRequest getAccountDetails(Integer number);
+        AccountDtoRequest getAccountDetails(String number);
 
-        void delete(Integer number);
+        void delete(String number);
 }

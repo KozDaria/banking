@@ -1,21 +1,21 @@
 package com.example.banking.model.dto;
 
 import com.example.banking.model.enums.CardStatus;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CardDtoRequest {
 
     String valid;
 
-    Integer number;
+    String number;
 
-    Integer cvv;
+    String cvv;
 
     String ownerName;
 

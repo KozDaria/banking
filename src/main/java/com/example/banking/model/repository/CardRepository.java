@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface CardRepository extends JpaRepository<Card, Long> {
 
-    Optional<Card> findByNumber(Integer number);
+    Optional<Card> findByNumber(String number);
 
     List<Card> findAllByOwnerName(String ownerName);
 

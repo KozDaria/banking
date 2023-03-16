@@ -24,19 +24,19 @@ public class Account {
     Long id;
 
     @Column(name = "account_number", unique = true, nullable = false)
-    Integer number;
+    String number;
 
     @Column(name = "person")
     String name;
 
     @Column(name = "bic")
-    Integer bic;
+    String bic;
 
     @Column(name = "bank")
     String bank;
 
     @Column(name = "kor_account")
-    BigInteger korAccount;
+    String korAccount;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore

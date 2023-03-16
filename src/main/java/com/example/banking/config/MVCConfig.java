@@ -15,6 +15,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
             registry.addViewController("/registration").setViewName("registration");
             registry.addViewController("/accounts").setViewName("accounts");
             registry.addViewController("/cards").setViewName("cards");
+            registry.addViewController("/createCard").setViewName("createCard");
+            registry.addViewController("/cards/createCard").setViewName("createCard");
             registry.addViewController("/").setViewName("login");
             registry.addViewController("/welcome").setViewName("welcome");
         }

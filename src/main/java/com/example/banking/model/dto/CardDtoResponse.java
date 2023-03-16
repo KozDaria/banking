@@ -12,4 +12,6 @@ public class CardDtoResponse extends CardDtoRequest {
 
     UserDto userDto;
 
+    AccountDtoResponse accountDtoResponse;
+
 }
